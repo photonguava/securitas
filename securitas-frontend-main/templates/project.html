@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Securitas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          
+          <li class="nav-item">
+            {{email}}
+          </li>
+        </ul>
+    </div>
+  </nav>
+  <br>
+    <div class="container-fluid">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Severity</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for vuln in data%}
+          <tr>
+            <th scope="row">{{vuln.id}}</th>
+            <td><a href="/vulnerability/{{vuln.id}}" target="_blank">{{vuln.title}}</a></td>
+            {%if 'Informational' in vuln.severity%}
+            <td><span class="badge badge-secondary">{{vuln.severity}}</span></td>
+            {%endif%}
+            {%if 'High' in vuln.severity%}
+            <td><span class="badge badge-danger">{{vuln.severity}}</span></td>
+            {%endif%}
+            {%if 'Low' in vuln.severity%}
+            <td><span class="badge badge-primary">{{vuln.severity}}</span></td>
+            {%endif%}
+            {%if 'Medium' in vuln.severity%}
+            <td><span class="badge badge-warning">{{vuln.severity}}</span></td>
+            {%endif%}
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+</body>
+</html>

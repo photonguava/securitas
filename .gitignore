@@ -1,0 +1,7 @@
+scanner/venv
+securitas-api/__pycache__
+securitas-api/venv
+securitas-api/db.sqlite3
+securitas-frontend-main/__pycache__
+securitas-frontend-main/venv
+securitas-frontend-main/db.sqlite3
